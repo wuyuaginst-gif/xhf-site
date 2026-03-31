@@ -18,6 +18,7 @@ const products = [
     title: "Points OS 积分运营平台",
     description: "下一代积分忠诚度操作系统，双屏联动（移动端+城市大脑端），AI智能推荐、游戏化运营。核心理念：万物皆可积分，积分即是服务。",
     icon: Coins,
+    image: "/images/jfpt.png",
     gradient: "from-blue-500 to-sky-400",
     shadowColor: "rgba(56, 189, 248, 0.3)",
     tag: "新品",
@@ -38,14 +39,6 @@ const products = [
     icon: Building2,
     gradient: "from-blue-400 to-cyan-400",
     shadowColor: "rgba(56, 189, 248, 0.3)",
-  },
-  {
-    id: 5,
-    title: "区块链技术",
-    description: "专注基于区块链技术的业务和产品创新，提供智能合约定制开发服务",
-    icon: LinkIcon,
-    gradient: "from-blue-600 to-sky-300",
-    shadowColor: "rgba(37, 99, 235, 0.3)",
   },
 ];
 
@@ -165,24 +158,40 @@ export default function ProductsSection() {
                   >
                     <Link href="/products" className="block group">
                       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 flex flex-col h-full hover:shadow-lg transition-all duration-300">
-                        {/* Icon with 3D effect */}
+                        {/* Icon or Image */}
                         <div className="relative mb-6">
-                          <div
-                            className={`tech-card-icon`}
-                            style={{
-                              background: `linear-gradient(135deg, ${product.shadowColor}40, transparent)`,
-                              boxShadow: `0 0 30px ${product.shadowColor}30`,
-                            }}
-                          >
-                            <div className={`w-full h-full rounded-xl bg-gradient-to-br ${product.gradient} flex items-center justify-center`}>
-                              <Icon className="w-7 h-7 text-white" />
+                          {(product as any).image ? (
+                            <div className="relative w-full rounded-xl overflow-hidden" style={{ boxShadow: `0 0 30px ${product.shadowColor}30` }}>
+                              <img
+                                src={(product as any).image}
+                                alt={product.title}
+                                className="w-full h-auto object-contain rounded-xl"
+                              />
+                              {product.tag && (
+                                <span className="absolute top-2 right-2 px-3 py-1 text-xs font-bold bg-gradient-to-r from-blue-500 to-sky-400 text-white rounded-full shadow-lg">
+                                  {product.tag}
+                                </span>
+                              )}
                             </div>
-                          </div>
-                          {/* Floating badge */}
-                          {product.tag && (
-                            <span className="absolute -top-2 -right-2 px-3 py-1 text-xs font-bold bg-gradient-to-r from-blue-500 to-sky-400 text-white rounded-full shadow-lg">
-                              {product.tag}
-                            </span>
+                          ) : (
+                            <>
+                              <div
+                                className={`tech-card-icon`}
+                                style={{
+                                  background: `linear-gradient(135deg, ${product.shadowColor}40, transparent)`,
+                                  boxShadow: `0 0 30px ${product.shadowColor}30`,
+                                }}
+                              >
+                                <div className={`w-full h-full rounded-xl bg-gradient-to-br ${product.gradient} flex items-center justify-center`}>
+                                  <Icon className="w-7 h-7 text-white" />
+                                </div>
+                              </div>
+                              {product.tag && (
+                                <span className="absolute -top-2 -right-2 px-3 py-1 text-xs font-bold bg-gradient-to-r from-blue-500 to-sky-400 text-white rounded-full shadow-lg">
+                                  {product.tag}
+                                </span>
+                              )}
+                            </>
                           )}
                         </div>
 
@@ -210,11 +219,6 @@ export default function ProductsSection() {
                           </div>
                         )}
 
-                        {/* Arrow indicator */}
-                        <div className="flex items-center gap-2 text-blue-600 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-[-10px] group-hover:translate-x-0">
-                          <span className="text-sm font-medium">了解更多</span>
-                          <ArrowRight className="w-4 h-4" />
-                        </div>
                       </div>
                     </Link>
                   </motion.div>
