@@ -38,13 +38,13 @@ export default function ParticleBackground() {
         vx: (Math.random() - 0.5) * 0.5,
         vy: (Math.random() - 0.5) * 0.5,
         radius: Math.random() * 2 + 1,
-        opacity: Math.random() * 0.5 + 0.3,
+        opacity: Math.random() * 0.4 + 0.1,
       });
     }
 
     const animate = () => {
-      // Clear canvas with semi-transparent background
-      ctx.fillStyle = 'rgba(15, 23, 42, 0.1)';
+      // Clear canvas with light semi-transparent background
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Update and draw particles
@@ -60,7 +60,7 @@ export default function ParticleBackground() {
         if (particle.y > canvas.height) particle.y = 0;
 
         // Draw particle
-        ctx.fillStyle = `rgba(34, 211, 238, ${particle.opacity})`;
+        ctx.fillStyle = `rgba(59, 130, 246, ${particle.opacity})`;
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
         ctx.fill();
@@ -74,7 +74,7 @@ export default function ParticleBackground() {
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < 150) {
-            ctx.strokeStyle = `rgba(34, 211, 238, ${0.2 * (1 - distance / 150)})`;
+            ctx.strokeStyle = `rgba(59, 130, 246, ${0.15 * (1 - distance / 150)})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);

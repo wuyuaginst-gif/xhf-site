@@ -29,11 +29,11 @@ export default function ThreeDBackground() {
     
     const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
     stop1.setAttribute('offset', '0%');
-    stop1.setAttribute('style', 'stop-color:rgb(34,211,238);stop-opacity:0.3');
+    stop1.setAttribute('style', 'stop-color:rgb(239,246,255);stop-opacity:1'); // blue-50
     
     const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
     stop2.setAttribute('offset', '100%');
-    stop2.setAttribute('style', 'stop-color:rgb(59,130,246);stop-opacity:0.1');
+    stop2.setAttribute('style', 'stop-color:rgb(224,242,254);stop-opacity:0.6'); // sky-100
     
     gradient1.appendChild(stop1);
     gradient1.appendChild(stop2);
@@ -50,21 +50,21 @@ export default function ThreeDBackground() {
       front.setAttribute('width', String(size));
       front.setAttribute('height', String(size));
       front.setAttribute('fill', 'url(#grad1)');
-      front.setAttribute('stroke', 'rgba(34, 211, 238, 0.5)');
+      front.setAttribute('stroke', 'rgba(59, 130, 246, 0.2)');
       front.setAttribute('stroke-width', '1');
 
       // Top face (3D effect)
       const top = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
       top.setAttribute('points', `0,0 ${size * 0.3},${-size * 0.3} ${size + size * 0.3},${-size * 0.3} ${size},0`);
-      top.setAttribute('fill', 'rgba(34, 211, 238, 0.2)');
-      top.setAttribute('stroke', 'rgba(34, 211, 238, 0.4)');
+      top.setAttribute('fill', 'rgba(248, 250, 252, 0.9)'); // slate-50
+      top.setAttribute('stroke', 'rgba(59, 130, 246, 0.2)');
       top.setAttribute('stroke-width', '1');
 
       // Right face (3D effect)
       const right = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
       right.setAttribute('points', `${size},0 ${size + size * 0.3},${-size * 0.3} ${size + size * 0.3},${size - size * 0.3} ${size},${size}`);
-      right.setAttribute('fill', 'rgba(34, 211, 238, 0.15)');
-      right.setAttribute('stroke', 'rgba(34, 211, 238, 0.3)');
+      right.setAttribute('fill', 'rgba(241, 245, 249, 0.8)'); // slate-100
+      right.setAttribute('stroke', 'rgba(59, 130, 246, 0.2)');
       right.setAttribute('stroke-width', '1');
 
       group.appendChild(front);
@@ -93,7 +93,7 @@ export default function ThreeDBackground() {
       line.setAttribute('y1', String(Math.random() * 1000));
       line.setAttribute('x2', String(Math.random() * 1000));
       line.setAttribute('y2', String(Math.random() * 1000));
-      line.setAttribute('stroke', `rgba(34, 211, 238, ${Math.random() * 0.3})`);
+      line.setAttribute('stroke', `rgba(59, 130, 246, ${Math.random() * 0.15 + 0.05})`);
       line.setAttribute('stroke-width', '1');
       svg.appendChild(line);
     }

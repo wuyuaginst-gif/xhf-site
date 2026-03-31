@@ -4,47 +4,30 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================
-   FUTURE TECH COLOR SYSTEM
-   深色科技感配色方案
+   BLUE & WHITE COLOR SYSTEM
+   蓝白配色方案
 ============================================ */
 
 :root {
-  /* 主背景色 - 深邃宇宙蓝/黑 */
-  --color-bg-primary: #050A30;
-  --color-bg-secondary: #0D0D0D;
-  --color-bg-tertiary: #0F172A;
+  /* 背景色 */
+  --color-bg-primary: #FFFFFF;       /* 主背景色 (白) */
+  --color-bg-secondary: #F8F9FA;     /* 次要背景色 (浅灰) */
+  --color-bg-tertiary: #E9ECEF;      /* 用于边框或分隔线 */
 
-  /* 主文本色 */
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #F0F0F0;
-  --color-text-muted: #94A3B8;
+  /* 文本颜色 */
+  --color-text-primary: #212529;     /* 主要文本 (近黑) */
+  --color-text-secondary: #495057;   /* 次要文本 (深灰) */
+  --color-text-muted: #6C757D;       /* 提示或禁用文本 */
 
-  /* 霓虹强调色 */
-  --color-neon-blue: #00D4FF;
-  --color-neon-cyan: #00FFCC;
-  --color-neon-magenta: #FF00FF;
-  --color-neon-purple: #8B5CF6;
-  --color-electric-blue: #7EC8E3;
+  /* 主题色 */
+  --color-primary: #007BFF;          /* 主题蓝 */
+  --color-primary-light: #4DA3FF;    /* 亮蓝 */
+  --color-primary-dark: #0056B3;     /* 深蓝 */
+  --color-accent: #00C4FF;           /* 另一个强调蓝 */
+
 
   /* 渐变色 */
-  --gradient-neon: linear-gradient(135deg, #00D4FF, #00FFCC, #8B5CF6);
-  --gradient-cosmic: linear-gradient(180deg, #050A30 0%, #0D0D0D 50%, #0F172A 100%);
-  --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-
-  /* 3D 深度颜色 */
-  --color-3d-front: rgba(0, 212, 255, 0.15);
-  --color-3d-mid: rgba(0, 212, 255, 0.08);
-  --color-3d-back: rgba(0, 212, 255, 0.03);
-
-  /* 玻璃拟态 */
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-blur: 20px;
-
-  /* 发光效果 */
-  --glow-blue: 0 0 20px rgba(0, 212, 255, 0.5);
-  --glow-cyan: 0 0 30px rgba(0, 255, 204, 0.4);
-  --glow-purple: 0 0 40px rgba(139, 92, 246, 0.3);
+  --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-accent));
 
   /* 动画时长 */
   --transition-fast: 150ms ease;
@@ -62,33 +45,17 @@
   --color-foreground: var(--color-text-primary);
 
   /* 自定义颜色映射 */
-  --color-cosmic: var(--color-bg-primary);
-  --color-neon: var(--color-neon-blue);
-  --color-neon-cyan: var(--color-neon-cyan);
-  --color-neon-magenta: var(--color-neon-magenta);
-  --color-neon-purple: var(--color-neon-purple);
-  --color-electric: var(--color-electric-blue);
-
-  /* 3D 层颜色 */
-  --color-3d-front: var(--color-3d-front);
-  --color-3d-mid: var(--color-3d-mid);
-  --color-3d-back: var(--color-3d-back);
-
-  /* 玻璃拟态 */
-  --color-glass: var(--glass-bg);
-  --color-glass-border: var(--glass-border);
+  --color-primary: var(--color-primary);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-accent: var(--color-accent);
 
   /* 字体 */
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-  --font-display: 'Orbitron', 'Rajdhani', 'Inter', sans-serif;
+  --font-display: 'Inter', 'system-ui', sans-serif;
 
   /* 动画 */
-  --animate-float: float 4s ease-in-out infinite;
-  --animate-float-delayed: float-delayed 4s ease-in-out infinite;
-  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
-  --animate-scanline: scanline 8s linear infinite;
-  --animate-rotate-slow: rotate-slow 20s linear infinite;
-  --animate-parallax: parallax 10s ease-out infinite;
+  --animate-shimmer: shimmer 1.5s infinite;
 }
 
 /* ============================================
@@ -127,12 +94,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--color-neon-blue), var(--color-neon-purple));
+  background: linear-gradient(180deg, #3B82F6, #0EA5E9);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--color-neon-cyan), var(--color-neon-magenta));
+  background: linear-gradient(180deg, #2563EB, #38BDF8);
 }
 
 /* ============================================
@@ -148,27 +115,27 @@ body {
 }
 
 .glass-strong {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.15);
   border-radius: 20px;
 }
 
 .neumorphic {
-  background: linear-gradient(145deg, #1a1a2e, #0f0f1a);
+  background: linear-gradient(145deg, #f0f4ff, #e8efff);
   border-radius: 20px;
   box-shadow:
-    8px 8px 20px rgba(0, 0, 0, 0.4),
-    -8px -8px 20px rgba(255, 255, 255, 0.02),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    8px 8px 20px rgba(59, 130, 246, 0.1),
+    -8px -8px 20px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 1px rgba(59, 130, 246, 0.08);
 }
 
 .neumorphic-pressed {
-  background: linear-gradient(145deg, #0f0f1a, #1a1a2e);
+  background: linear-gradient(145deg, #e8efff, #f0f4ff);
   box-shadow:
-    inset 4px 4px 10px rgba(0, 0, 0, 0.5),
-    inset -4px -4px 10px rgba(255, 255, 255, 0.02);
+    inset 4px 4px 10px rgba(59, 130, 246, 0.12),
+    inset -4px -4px 10px rgba(255, 255, 255, 0.8);
 }
 
 /* ============================================
@@ -177,36 +144,36 @@ body {
 
 .neon-glow {
   box-shadow:
-    0 0 5px var(--color-neon-blue),
-    0 0 10px var(--color-neon-blue),
-    0 0 20px var(--color-neon-blue),
-    0 0 40px var(--color-neon-blue);
+    0 0 5px rgba(59, 130, 246, 0.4),
+    0 0 10px rgba(59, 130, 246, 0.3),
+    0 0 20px rgba(59, 130, 246, 0.2),
+    0 0 40px rgba(59, 130, 246, 0.1);
 }
 
 .neon-glow-cyan {
   box-shadow:
-    0 0 5px var(--color-neon-cyan),
-    0 0 10px var(--color-neon-cyan),
-    0 0 20px var(--color-neon-cyan),
-    0 0 40px var(--color-neon-cyan);
+    0 0 5px rgba(14, 165, 233, 0.4),
+    0 0 10px rgba(14, 165, 233, 0.3),
+    0 0 20px rgba(14, 165, 233, 0.2),
+    0 0 40px rgba(14, 165, 233, 0.1);
 }
 
 .neon-glow-purple {
   box-shadow:
-    0 0 5px var(--color-neon-purple),
-    0 0 10px var(--color-neon-purple),
-    0 0 20px var(--color-neon-purple),
-    0 0 40px var(--color-neon-purple);
+    0 0 5px rgba(59, 130, 246, 0.4),
+    0 0 10px rgba(59, 130, 246, 0.3),
+    0 0 20px rgba(59, 130, 246, 0.2),
+    0 0 40px rgba(59, 130, 246, 0.1);
 }
 
 .neon-border {
-  border: 1px solid var(--color-neon-blue);
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3), inset 0 0 15px rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.15), inset 0 0 15px rgba(59, 130, 246, 0.05);
 }
 
 .neon-border:hover {
-  border-color: var(--color-neon-cyan);
-  box-shadow: 0 0 25px rgba(0, 255, 204, 0.4), inset 0 0 25px rgba(0, 255, 204, 0.1);
+  border-color: rgba(14, 165, 233, 0.6);
+  box-shadow: 0 0 25px rgba(14, 165, 233, 0.2), inset 0 0 25px rgba(14, 165, 233, 0.05);
 }
 
 /* ============================================
@@ -214,15 +181,15 @@ body {
 ============================================ */
 
 .gradient-cosmic {
-  background: var(--gradient-cosmic);
+  background: linear-gradient(135deg, #3B82F6, #0EA5E9, #38BDF8);
 }
 
 .gradient-neon {
-  background: var(--gradient-neon);
+  background: linear-gradient(135deg, #2563EB, #0EA5E9);
 }
 
 .gradient-text {
-  background: var(--gradient-neon);
+  background: linear-gradient(135deg, #2563EB, #0EA5E9);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -239,7 +206,7 @@ body {
   content: '';
   position: absolute;
   inset: -1px;
-  background: var(--gradient-neon);
+  background: linear-gradient(135deg, #2563EB, #0EA5E9);
   border-radius: inherit;
   z-index: -1;
   mask:
@@ -512,8 +479,8 @@ body {
 /* 科技网格背景 */
 .tech-grid {
   background-image:
-    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(59, 130, 246, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.06) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
@@ -526,19 +493,19 @@ body {
 }
 
 .text-glow-blue {
-  color: var(--color-neon-blue);
+  color: #2563EB;
   text-shadow:
-    0 0 5px var(--color-neon-blue),
-    0 0 10px var(--color-neon-blue),
-    0 0 20px var(--color-neon-blue);
+    0 0 5px rgba(37, 99, 235, 0.4),
+    0 0 10px rgba(37, 99, 235, 0.2),
+    0 0 20px rgba(37, 99, 235, 0.1);
 }
 
 .text-glow-cyan {
-  color: var(--color-neon-cyan);
+  color: #0EA5E9;
   text-shadow:
-    0 0 5px var(--color-neon-cyan),
-    0 0 10px var(--color-neon-cyan),
-    0 0 20px var(--color-neon-cyan);
+    0 0 5px rgba(14, 165, 233, 0.4),
+    0 0 10px rgba(14, 165, 233, 0.2),
+    0 0 20px rgba(14, 165, 233, 0.1);
 }
 
 /* 隐藏滚动条 */
@@ -599,14 +566,13 @@ body {
 
 .tech-card {
   position: relative;
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(5, 10, 48, 0.9));
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  background: #ffffff;
+  border: 1px solid rgba(59, 130, 246, 0.15);
   border-radius: 20px;
   padding: 2rem;
   overflow: hidden;
   transition: all var(--transition-liquid);
+  box-shadow: 0 2px 12px rgba(59, 130, 246, 0.06);
 }
 
 .tech-card::before {
@@ -619,7 +585,7 @@ body {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(0, 212, 255, 0.1),
+    rgba(59, 130, 246, 0.05),
     transparent
   );
   transition: left var(--transition-slow);
@@ -630,12 +596,11 @@ body {
 }
 
 .tech-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: rgba(0, 212, 255, 0.5);
+  transform: translateY(-6px);
+  border-color: rgba(59, 130, 246, 0.35);
   box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.4),
-    0 0 30px rgba(0, 212, 255, 0.15),
-    inset 0 0 20px rgba(0, 212, 255, 0.05);
+    0 16px 40px rgba(59, 130, 246, 0.12),
+    0 0 0 1px rgba(59, 130, 246, 0.1);
 }
 
 /* 卡片悬浮图标 */
@@ -647,14 +612,14 @@ body {
   width: 64px;
   height: 64px;
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(139, 92, 246, 0.2));
-  border: 1px solid rgba(0, 212, 255, 0.3);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(14, 165, 233, 0.12));
+  border: 1px solid rgba(59, 130, 246, 0.2);
   transition: all var(--transition-normal);
 }
 
 .tech-card:hover .tech-card-icon {
   transform: scale(1.1) rotateY(15deg);
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
 }
 
 /* ============================================
@@ -915,23 +880,22 @@ body {
 ============================================ */
 
 .hero-title {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Inter', 'system-ui', sans-serif;
   font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 800;
   line-height: 1.1;
-  letter-spacing: 0.05em;
+  letter-spacing: -0.01em;
   background: linear-gradient(
     135deg,
-    var(--color-text-primary) 0%,
-    var(--color-neon-blue) 30%,
-    var(--color-neon-cyan) 70%,
-    var(--color-neon-purple) 100%
+    #1e3a5f 0%,
+    #1d4ed8 40%,
+    #0ea5e9 100%
   );
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient-shift 5s ease infinite;
+  animation: gradient-shift 6s ease infinite;
 }
 
 .hero-subtitle {

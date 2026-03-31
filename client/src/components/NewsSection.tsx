@@ -26,14 +26,14 @@ const news = [
 
 export default function NewsSection() {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-slate-50/50">
       <div className="container">
         {/* Section header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">新闻中心</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+            <span className="bg-gradient-to-r from-slate-900 to-blue-800 bg-clip-text text-transparent">新闻中心</span>
           </h2>
-          <p className="text-lg text-foreground/70">
+          <p className="text-lg text-slate-500">
             聚焦行业动态，传播最新资讯
           </p>
         </div>
@@ -43,32 +43,32 @@ export default function NewsSection() {
           {news.map((item) => (
             <div
               key={item.id}
-              className="tech-card flex flex-col h-full"
+              className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full"
             >
               {/* Category badge */}
               <div className="inline-flex items-center gap-2 mb-4">
-                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-600 border border-blue-200">
                   {item.category}
                 </span>
               </div>
 
               {/* Title */}
-              <h3 className="text-lg font-bold text-foreground mb-3 line-clamp-2 group-hover:text-cyan-400 transition-colors">
+              <h3 className="text-lg font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
                 {item.title}
               </h3>
 
               {/* Description */}
-              <p className="text-foreground/70 text-sm mb-4 flex-grow line-clamp-2">
+              <p className="text-slate-600 text-sm mb-4 flex-grow line-clamp-2">
                 {item.description}
               </p>
 
               {/* Date and link */}
-              <div className="flex items-center justify-between pt-4 border-t border-cyan-500/10">
-                <div className="flex items-center gap-2 text-xs text-foreground/60">
+              <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                <div className="flex items-center gap-2 text-xs text-slate-400">
                   <Calendar className="w-4 h-4" />
                   {item.date}
                 </div>
-                <ArrowRight className="w-4 h-4 text-cyan-400 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-blue-500 group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
           ))}
@@ -76,7 +76,7 @@ export default function NewsSection() {
 
         {/* View more button */}
         <div className="text-center mt-12">
-          <button className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-cyan-500/50 text-foreground font-semibold hover:bg-cyan-500/10 hover:border-cyan-400 transition-all duration-300">
+          <button className="inline-flex items-center gap-2 px-8 py-3 rounded-xl border border-blue-200 bg-white shadow-sm text-blue-600 font-semibold hover:bg-blue-50 hover:border-blue-400 transition-all duration-300">
             查看更多新闻
             <ArrowRight className="w-4 h-4" />
           </button>

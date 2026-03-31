@@ -12,9 +12,9 @@ export function AbstractBackground() {
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         className="absolute inset-0 opacity-30"
         style={{
-          background: `radial-gradient(circle at 20% 30%, #00D4FF22 0%, transparent 50%),
-                       radial-gradient(circle at 80% 70%, #8B5CF622 0%, transparent 50%),
-                       radial-gradient(circle at 50% 50%, #000000 0%, transparent 70%)`,
+          background: `radial-gradient(circle at 20% 30%, #3B82F615 0%, transparent 50%),
+                       radial-gradient(circle at 80% 70%, #38BDF815 0%, transparent 50%),
+                       radial-gradient(circle at 50% 50%, #ffffff 0%, transparent 70%)`,
         }}
       />
 
@@ -36,9 +36,9 @@ export function AbstractBackground() {
         />
         <defs>
           <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#00D4FF" />
-            <stop offset="50%" stopColor="#8B5CF6" />
-            <stop offset="100%" stopColor="#00D4FF" />
+            <stop offset="0%" stopColor="#3B82F6" />
+            <stop offset="50%" stopColor="#38BDF8" />
+            <stop offset="100%" stopColor="#3B82F6" />
           </linearGradient>
         </defs>
       </svg>
@@ -47,7 +47,7 @@ export function AbstractBackground() {
       {[...Array(20)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 bg-cyan-400 rounded-full opacity-30"
+          className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-30"
           initial={{
             x: Math.random() * 100 + "%",
             y: Math.random() * 100 + "%",
@@ -74,8 +74,8 @@ export function TechPattern() {
       className="absolute inset-0 opacity-5 pointer-events-none"
       style={{
         backgroundImage: `
-          linear-gradient(rgba(0, 212, 255, 0.3) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 212, 255, 0.3) 1px, transparent 1px)
+          linear-gradient(rgba(59, 130, 246, 0.2) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(59, 130, 246, 0.2) 1px, transparent 1px)
         `,
         backgroundSize: "60px 60px",
         maskImage: "radial-gradient(circle at center, black 30%, transparent 70%)",
@@ -86,7 +86,7 @@ export function TechPattern() {
 
 // Glowing Orb Effect
 export function GlowingOrb({
-  color = "#00D4FF",
+  color = "#3B82F6",
   size = 400,
   delay = 0,
 }: {
@@ -121,21 +121,21 @@ export function CardPlaceholder({
   description: string;
 }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 p-8 hover:border-cyan-500/30 transition-all duration-500">
+    <div className="group relative overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-sm p-8 hover:border-blue-300 hover:shadow-md transition-all duration-500">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-sky-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       {/* Icon container */}
       <div className="relative w-16 h-16 mb-6">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-2xl blur-xl" />
-        <div className="relative w-full h-full rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-          <Icon className="w-8 h-8 text-white" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-sky-100 rounded-2xl blur-xl" />
+        <div className="relative w-full h-full rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center">
+          <Icon className="w-8 h-8 text-blue-600" />
         </div>
       </div>
 
       {/* Content */}
-      <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
-      <p className="text-sm text-white/60">{description}</p>
+      <h3 className="text-xl font-semibold text-slate-900 mb-2">{title}</h3>
+      <p className="text-sm text-slate-500">{description}</p>
 
       {/* Hover arrow */}
       <motion.div
@@ -143,8 +143,8 @@ export function CardPlaceholder({
         whileHover={{ opacity: 1, x: 0 }}
         className="absolute bottom-8 right-8"
       >
-        <div className="w-10 h-10 rounded-full bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center">
-          <svg className="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div className="w-10 h-10 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center">
+          <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </div>
@@ -175,7 +175,7 @@ export function AbstractImage({
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
       />
       {/* Overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-60" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-60" />
     </motion.div>
   );
 }
@@ -191,21 +191,21 @@ export function StatsCard({
   trend?: string;
 }) {
   return (
-    <div className="group relative p-6 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-cyan-500/30 transition-all duration-300">
+    <div className="group relative p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-300 transition-all duration-300 hover:shadow-md">
       <div className="flex items-center justify-between mb-4">
-        <span className="text-4xl font-bold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
+        <span className="text-4xl font-bold bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent">
           {value}
         </span>
         {trend && (
-          <span className="text-xs text-green-400 bg-green-400/10 px-2 py-1 rounded-full">
+          <span className="text-xs text-emerald-600 bg-emerald-50 border border-emerald-100 px-2 py-1 rounded-full">
             {trend}
           </span>
         )}
       </div>
-      <p className="text-sm text-white/40">{label}</p>
+      <p className="text-sm text-slate-500">{label}</p>
 
       {/* Hover glow */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/5 group-hover:to-purple-500/5 transition-all duration-500" />
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-50/0 to-sky-50/0 group-hover:from-blue-50/30 group-hover:to-sky-50/30 transition-all duration-500" />
     </div>
   );
 }
@@ -229,8 +229,8 @@ export function ModernButton({
         relative px-6 py-3 rounded-xl font-medium transition-all duration-300
         ${
           variant === "primary"
-            ? "bg-white text-black hover:bg-gray-100"
-            : "bg-white/5 text-white border border-white/10 hover:bg-white/10"
+            ? "bg-blue-600 text-white hover:bg-blue-700 shadow-sm"
+            : "bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 hover:text-blue-600"
         }
       `}
     >
@@ -243,9 +243,9 @@ export function ModernButton({
 export function SectionDivider() {
   return (
     <div className="flex items-center justify-center gap-4 py-12">
-      <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent flex-1 max-w-xs" />
-      <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-      <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent flex-1 max-w-xs" />
+      <div className="h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent flex-1 max-w-xs" />
+      <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+      <div className="h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent flex-1 max-w-xs" />
     </div>
   );
 }
@@ -265,17 +265,17 @@ export function FeatureItem({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative p-6 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-cyan-500/30 transition-all duration-300"
+      className="group relative p-6 rounded-2xl bg-white shadow-sm border border-slate-200 hover:border-blue-300 transition-all duration-300"
     >
       <div className="flex items-start gap-4">
-        <span className="text-5xl font-bold text-white/10 group-hover:text-cyan-500/20 transition-colors">
+        <span className="text-5xl font-bold text-slate-100 group-hover:text-blue-100 transition-colors">
           {number}
         </span>
         <div>
-          <h4 className="text-lg font-medium text-white mb-2 group-hover:text-cyan-400 transition-colors">
+          <h4 className="text-lg font-medium text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
             {title}
           </h4>
-          <p className="text-sm text-white/40 leading-relaxed">{description}</p>
+          <p className="text-sm text-slate-500 leading-relaxed">{description}</p>
         </div>
       </div>
     </motion.div>
@@ -287,7 +287,7 @@ export function ProgressBar({
   value,
   max = 100,
   label,
-  color = "#00D4FF",
+  color = "#3B82F6",
 }: {
   value: number;
   max?: number;
@@ -299,10 +299,10 @@ export function ProgressBar({
   return (
     <div className="space-y-2">
       <div className="flex justify-between text-sm">
-        <span className="text-white/60">{label}</span>
-        <span className="text-white/40">{value}%</span>
+        <span className="text-slate-600">{label}</span>
+        <span className="text-slate-500">{value}%</span>
       </div>
-      <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+      <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${percentage}%` }}

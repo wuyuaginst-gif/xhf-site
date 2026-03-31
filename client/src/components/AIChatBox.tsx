@@ -191,7 +191,7 @@ export function AIChatBox({
     <div
       ref={containerRef}
       className={cn(
-        "flex flex-col bg-card text-card-foreground rounded-lg border shadow-sm",
+        "flex flex-col bg-slate-50/50 text-slate-900 rounded-xl border border-slate-200 shadow-sm overflow-hidden",
         className
       )}
       style={{ height }}
@@ -200,7 +200,7 @@ export function AIChatBox({
       <div ref={scrollAreaRef} className="flex-1 overflow-hidden">
         {displayMessages.length === 0 ? (
           <div className="flex h-full flex-col p-4">
-            <div className="flex flex-1 flex-col items-center justify-center gap-6 text-muted-foreground">
+            <div className="flex flex-1 flex-col items-center justify-center gap-6 text-slate-500">
               <div className="flex flex-col items-center gap-3">
                 <Sparkles className="size-12 opacity-20" />
                 <p className="text-sm">{emptyStateMessage}</p>
@@ -213,7 +213,7 @@ export function AIChatBox({
                       key={index}
                       onClick={() => onSendMessage(prompt)}
                       disabled={isLoading}
-                      className="rounded-lg border border-border bg-card px-4 py-2 text-sm transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-50"
+                      className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm transition-all hover:border-blue-300 hover:shadow-sm disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       {prompt}
                     </button>
@@ -247,17 +247,17 @@ export function AIChatBox({
                     }
                   >
                     {message.role === "assistant" && (
-                      <div className="size-8 shrink-0 mt-1 rounded-full bg-primary/10 flex items-center justify-center">
-                        <Sparkles className="size-4 text-primary" />
+                      <div className="size-8 shrink-0 mt-1 rounded-full bg-blue-50 flex items-center justify-center">
+                        <Sparkles className="size-4 text-blue-600" />
                       </div>
                     )}
 
                     <div
                       className={cn(
-                        "max-w-[80%] rounded-lg px-4 py-2.5",
+                        "max-w-[80%] px-4 py-3 shadow-sm",
                         message.role === "user"
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-muted text-foreground"
+                          ? "bg-blue-600 text-white rounded-2xl rounded-tr-sm"
+                          : "bg-white border border-slate-200 text-slate-800 rounded-2xl rounded-tl-sm"
                       )}
                     >
                       {message.role === "assistant" ? (
@@ -272,8 +272,8 @@ export function AIChatBox({
                     </div>
 
                     {message.role === "user" && (
-                      <div className="size-8 shrink-0 mt-1 rounded-full bg-secondary flex items-center justify-center">
-                        <User className="size-4 text-secondary-foreground" />
+                      <div className="size-8 shrink-0 mt-1 rounded-full bg-blue-100 flex items-center justify-center">
+                        <User className="size-4 text-blue-700" />
                       </div>
                     )}
                   </div>
@@ -289,11 +289,11 @@ export function AIChatBox({
                       : undefined
                   }
                 >
-                  <div className="size-8 shrink-0 mt-1 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Sparkles className="size-4 text-primary" />
+                  <div className="size-8 shrink-0 mt-1 rounded-full bg-blue-50 flex items-center justify-center">
+                    <Sparkles className="size-4 text-blue-600" />
                   </div>
-                  <div className="rounded-lg bg-muted px-4 py-2.5">
-                    <Loader2 className="size-4 animate-spin text-muted-foreground" />
+                  <div className="rounded-2xl rounded-tl-sm bg-white border border-slate-200 px-4 py-3 shadow-sm flex items-center h-[46px]">
+                    <Loader2 className="size-4 animate-spin text-slate-500" />
                   </div>
                 </div>
               )}
@@ -306,29 +306,31 @@ export function AIChatBox({
       <form
         ref={inputAreaRef}
         onSubmit={handleSubmit}
-        className="flex gap-2 p-4 border-t bg-background/50 items-end"
+        className="p-4 bg-white border-t border-slate-200"
       >
-        <Textarea
-          ref={textareaRef}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder={placeholder}
-          className="flex-1 max-h-32 resize-none min-h-9"
-          rows={1}
-        />
-        <Button
-          type="submit"
-          size="icon"
-          disabled={!input.trim() || isLoading}
-          className="shrink-0 h-[38px] w-[38px]"
-        >
-          {isLoading ? (
-            <Loader2 className="size-4 animate-spin" />
-          ) : (
-            <Send className="size-4" />
-          )}
-        </Button>
+        <div className="relative flex items-end gap-2 bg-slate-50 border border-slate-200 rounded-2xl shadow-sm focus-within:bg-white focus-within:ring-1 focus-within:ring-blue-500 focus-within:border-blue-500 transition-all p-1">
+          <Textarea
+            ref={textareaRef}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder={placeholder}
+            className="flex-1 max-h-32 resize-none min-h-10 border-0 bg-transparent focus-visible:ring-0 shadow-none px-3 py-2.5"
+            rows={1}
+          />
+          <Button
+            type="submit"
+            size="icon"
+            disabled={!input.trim() || isLoading}
+            className="shrink-0 h-9 w-9 rounded-xl mb-0.5 mr-0.5"
+          >
+            {isLoading ? (
+              <Loader2 className="size-4 animate-spin" />
+            ) : (
+              <Send className="size-4 ml-0.5" />
+            )}
+          </Button>
+        </div>
       </form>
     </div>
   );

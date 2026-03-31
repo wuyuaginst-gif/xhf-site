@@ -78,14 +78,14 @@ const faqs = [
 
 export default function Service() {
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-white text-slate-900">
       <Navigation />
       <main className="flex-1 pt-20">
         {/* Hero section */}
-        <section className="relative py-20 overflow-hidden gradient-tech">
+        <section className="relative py-20 overflow-hidden section-3d bg-white">
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 left-10 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute top-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-20 left-10 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
           </div>
 
           <div className="container relative z-10">
@@ -93,7 +93,7 @@ export default function Service() {
               <h1 className="text-5xl md:text-6xl font-bold">
                 <span className="gradient-text">服务支持</span>
               </h1>
-              <p className="text-lg text-foreground/70">
+              <p className="text-lg text-slate-600">
                 专业的技术团队为您提供全方位的服务支持
               </p>
             </div>
@@ -101,20 +101,20 @@ export default function Service() {
         </section>
 
         {/* Services */}
-        <section className="py-20 bg-background">
+        <section className="py-20 bg-white">
           <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
               {services.map((service, idx) => {
                 const Icon = service.icon;
                 return (
                   <div key={idx} className="tech-card">
-                    <Icon className="w-12 h-12 text-cyan-400 mb-4" />
-                    <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
-                    <p className="text-foreground/70 mb-6">{service.description}</p>
+                    <Icon className="w-12 h-12 text-blue-600 mb-4" />
+                    <h3 className="text-2xl font-bold mb-2 text-slate-900">{service.title}</h3>
+                    <p className="text-slate-600 mb-6">{service.description}</p>
                     <ul className="space-y-2">
                       {service.details.map((detail, didx) => (
-                        <li key={didx} className="flex items-center gap-2 text-foreground/80">
-                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                        <li key={didx} className="flex items-center gap-2 text-slate-600">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
                           {detail}
                         </li>
                       ))}
@@ -127,7 +127,7 @@ export default function Service() {
         </section>
 
         {/* FAQs */}
-        <section className="py-20 bg-slate-900/50">
+        <section className="py-20 bg-slate-50/60">
           <div className="container">
             <h2 className="text-4xl font-bold text-center mb-16">
               <span className="gradient-text">常见问题</span>
@@ -136,11 +136,11 @@ export default function Service() {
               {faqs.map((faq, idx) => (
                 <div key={idx} className="tech-card">
                   <details className="group cursor-pointer">
-                    <summary className="flex items-center justify-between font-bold text-lg hover:text-cyan-400 transition-colors">
+                    <summary className="flex items-center justify-between font-bold text-lg hover:text-blue-600 transition-colors text-slate-900">
                       {faq.question}
-                      <span className="text-cyan-400 group-open:rotate-180 transition-transform">▼</span>
+                      <span className="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
                     </summary>
-                    <p className="mt-4 text-foreground/70 leading-relaxed">
+                    <p className="mt-4 text-slate-600 leading-relaxed">
                       {faq.answer}
                     </p>
                   </details>
@@ -151,20 +151,20 @@ export default function Service() {
         </section>
 
         {/* Contact CTA */}
-        <section className="py-20 bg-background">
+        <section className="py-20 bg-white">
           <div className="container">
             <div className="max-w-2xl mx-auto text-center space-y-6">
-              <h2 className="text-3xl font-bold">
+              <h2 className="text-3xl font-bold text-slate-900">
                 需要帮助？
               </h2>
-              <p className="text-lg text-foreground/70">
+              <p className="text-lg text-slate-600">
                 我们的技术团队随时准备为您服务。请通过以下方式联系我们。
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <a href="tel:02787771732" className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-accent text-background font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300">
+                <a href="tel:02787771732" className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-all duration-300">
                   电话咨询
                 </a>
-                <a href="mailto:hbxhf@hbxhf.com.cn" className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-cyan-500/50 text-foreground font-semibold hover:bg-cyan-500/10 hover:border-cyan-400 transition-all duration-300">
+                <a href="mailto:hbxhf@hbxhf.com.cn" className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-blue-200 text-blue-600 font-semibold hover:bg-blue-50 hover:border-blue-400 transition-all duration-300">
                   发送邮件
                 </a>
               </div>

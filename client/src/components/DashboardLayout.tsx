@@ -66,13 +66,13 @@ export default function DashboardLayout({
                 <img
                   src={APP_LOGO}
                   alt={APP_TITLE}
-                  className="h-20 w-20 rounded-xl object-cover shadow"
+                  className="h-20 w-20 rounded-2xl object-cover shadow-sm ring-1 ring-slate-200"
                 />
               </div>
             </div>
             <div className="text-center space-y-2">
               <h1 className="text-2xl font-bold tracking-tight">{APP_TITLE}</h1>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-slate-500">
                 Please sign in to continue
               </p>
             </div>
@@ -82,7 +82,7 @@ export default function DashboardLayout({
               window.location.href = getLoginUrl();
             }}
             size="lg"
-            className="w-full shadow-lg hover:shadow-xl transition-all"
+            className="w-full rounded-xl shadow-sm hover:shadow-md transition-all"
           >
             Sign in
           </Button>
@@ -174,14 +174,14 @@ function DashboardLayoutContent({
                 <div className="relative h-8 w-8 shrink-0 group">
                   <img
                     src={APP_LOGO}
-                    className="h-8 w-8 rounded-md object-cover ring-1 ring-border"
+                    className="h-8 w-8 rounded-xl object-cover ring-1 ring-slate-200"
                     alt="Logo"
                   />
                   <button
                     onClick={toggleSidebar}
-                    className="absolute inset-0 flex items-center justify-center bg-accent rounded-md ring-1 ring-border opacity-0 group-hover:opacity-100 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="absolute inset-0 flex items-center justify-center bg-slate-100 rounded-xl ring-1 ring-slate-200 opacity-0 group-hover:opacity-100 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
-                    <PanelLeft className="h-4 w-4 text-foreground" />
+                    <PanelLeft className="h-4 w-4 text-slate-900" />
                   </button>
                 </div>
               ) : (
@@ -189,7 +189,7 @@ function DashboardLayoutContent({
                   <div className="flex items-center gap-3 min-w-0">
                     <img
                       src={APP_LOGO}
-                      className="h-8 w-8 rounded-md object-cover ring-1 ring-border shrink-0"
+                      className="h-8 w-8 rounded-xl object-cover ring-1 ring-slate-200 shrink-0"
                       alt="Logo"
                     />
                     <span className="font-semibold tracking-tight truncate">
@@ -198,9 +198,9 @@ function DashboardLayoutContent({
                   </div>
                   <button
                     onClick={toggleSidebar}
-                    className="ml-auto h-8 w-8 flex items-center justify-center hover:bg-accent rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring shrink-0"
+                    className="ml-auto h-8 w-8 flex items-center justify-center hover:bg-slate-100 rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring shrink-0"
                   >
-                    <PanelLeft className="h-4 w-4 text-muted-foreground" />
+                    <PanelLeft className="h-4 w-4 text-slate-500" />
                   </button>
                 </>
               )}
@@ -217,10 +217,10 @@ function DashboardLayoutContent({
                       isActive={isActive}
                       onClick={() => setLocation(item.path)}
                       tooltip={item.label}
-                      className={`h-10 transition-all font-normal`}
+                      className={`h-10 rounded-xl transition-all font-normal`}
                     >
                       <item.icon
-                        className={`h-4 w-4 ${isActive ? "text-primary" : ""}`}
+                        className={`h-4 w-4 ${isActive ? "text-blue-600" : ""}`}
                       />
                       <span>{item.label}</span>
                     </SidebarMenuButton>
@@ -233,9 +233,9 @@ function DashboardLayoutContent({
           <SidebarFooter className="p-3">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className="flex items-center gap-3 rounded-lg px-1 py-1 hover:bg-accent/50 transition-colors w-full text-left group-data-[collapsible=icon]:justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                  <Avatar className="h-9 w-9 border shrink-0">
-                    <AvatarFallback className="text-xs font-medium">
+                <button className="flex items-center gap-3 rounded-xl px-1 py-1 hover:bg-slate-100/50 transition-colors w-full text-left group-data-[collapsible=icon]:justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                  <Avatar className="h-9 w-9 border shrink-0 rounded-xl">
+                    <AvatarFallback className="text-xs font-medium rounded-xl">
                       {user?.name?.charAt(0).toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
@@ -243,7 +243,7 @@ function DashboardLayoutContent({
                     <p className="text-sm font-medium truncate leading-none">
                       {user?.name || "-"}
                     </p>
-                    <p className="text-xs text-muted-foreground truncate mt-1.5">
+                    <p className="text-xs text-slate-500 truncate mt-1.5">
                       {user?.email || "-"}
                     </p>
                   </div>
@@ -252,7 +252,7 @@ function DashboardLayoutContent({
               <DropdownMenuContent align="end" className="w-48">
                 <DropdownMenuItem
                   onClick={logout}
-                  className="cursor-pointer text-destructive focus:text-destructive"
+                  className="cursor-pointer text-red-600 focus:text-red-700"
                 >
                   <LogOut className="mr-2 h-4 w-4" />
                   <span>Sign out</span>
@@ -262,7 +262,7 @@ function DashboardLayoutContent({
           </SidebarFooter>
         </Sidebar>
         <div
-          className={`absolute top-0 right-0 w-1 h-full cursor-col-resize hover:bg-primary/20 transition-colors ${isCollapsed ? "hidden" : ""}`}
+          className={`absolute top-0 right-0 w-1 h-full cursor-col-resize hover:bg-blue-200 transition-colors ${isCollapsed ? "hidden" : ""}`}
           onMouseDown={() => {
             if (isCollapsed) return;
             setIsResizing(true);
@@ -273,12 +273,12 @@ function DashboardLayoutContent({
 
       <SidebarInset>
         {isMobile && (
-          <div className="flex border-b h-14 items-center justify-between bg-background/95 px-2 backdrop-blur supports-[backdrop-filter]:backdrop-blur sticky top-0 z-40">
+          <div className="flex border-b h-14 items-center justify-between bg-white/95 px-2 backdrop-blur supports-[backdrop-filter]:backdrop-blur sticky top-0 z-40">
             <div className="flex items-center gap-2">
-              <SidebarTrigger className="h-9 w-9 rounded-lg bg-background" />
+              <SidebarTrigger className="h-9 w-9 rounded-xl bg-white" />
               <div className="flex items-center gap-3">
                 <div className="flex flex-col gap-1">
-                  <span className="tracking-tight text-foreground">
+                  <span className="tracking-tight text-slate-900">
                     {activeMenuItem?.label ?? APP_TITLE}
                   </span>
                 </div>

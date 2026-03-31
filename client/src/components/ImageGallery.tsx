@@ -16,6 +16,7 @@ interface ImageGalleryProps {
 
 export default function ImageGallery({ images, title }: ImageGalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [visibleCount, setVisibleCount] = useState(3);
 
   const handlePrevious = () => {
     if (selectedIndex === null) return;
@@ -27,19 +28,25 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
     setSelectedIndex((selectedIndex + 1) % images.length);
   };
 
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => Math.min(prev + 3, images.length));
+  };
+
+  const hasMore = visibleCount < images.length;
+
   return (
     <>
       {title && (
         <h2 className="text-3xl font-bold text-center mb-12">
-          <span className="gradient-text">{title}</span>
+          <span className="bg-gradient-to-r from-slate-900 to-blue-800 bg-clip-text text-transparent">{title}</span>
         </h2>
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {images.map((image, index) => (
+        {images.slice(0, visibleCount).map((image, index) => (
           <div
             key={image.id}
-            className="tech-card group cursor-pointer overflow-hidden"
+            className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 group cursor-pointer overflow-hidden hover:shadow-md transition-all duration-300"
             onClick={() => setSelectedIndex(index)}
           >
             <div className="relative h-64 overflow-hidden rounded-lg mb-4">
@@ -54,18 +61,29 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
             </div>
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <h3 className="font-bold text-foreground group-hover:text-cyan-400 transition-colors">
+                <h3 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                   {image.title}
                 </h3>
-                <span className="px-2 py-1 rounded text-xs bg-cyan-500/20 text-cyan-300">
+                <span className="px-2 py-1 rounded-md text-xs bg-blue-50 text-blue-600 border border-blue-100">
                   {image.category}
                 </span>
               </div>
-              <p className="text-sm text-foreground/70">{image.description}</p>
+              <p className="text-sm text-slate-500">{image.description}</p>
             </div>
           </div>
         ))}
       </div>
+
+      {hasMore && (
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={handleLoadMore}
+            className="px-6 py-3 rounded-lg border border-blue-200 text-blue-600 hover:bg-blue-50 transition-colors font-medium"
+          >
+            加载更多
+          </button>
+        </div>
+      )}
 
       {/* Lightbox */}
       {selectedIndex !== null && (

@@ -99,11 +99,11 @@ const features = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#050A30] text-white relative overflow-hidden">
+    <div className="min-h-screen flex flex-col bg-white text-slate-900 relative overflow-hidden">
       {/* Abstract background */}
       <AbstractBackground />
-      <GlowingOrb color="#00D4FF" size={500} delay={0} />
-      <GlowingOrb color="#8B5CF6" size={400} delay={1} />
+      <GlowingOrb color="#3B82F6" size={500} delay={0} />
+      <GlowingOrb color="#38BDF8" size={400} delay={1} />
 
       <div className="relative z-10">
         <Navigation />
@@ -139,16 +139,16 @@ export default function Home() {
                 transition={{ duration: 0.6 }}
                 className="text-center mb-16"
               >
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-6">
-                  <Sparkles className="w-4 h-4 text-cyan-400" />
-                  <span className="text-sm text-cyan-400 font-medium">CORE FEATURES</span>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 mb-6">
+                  <Sparkles className="w-4 h-4 text-blue-600" />
+                  <span className="text-sm text-blue-600 font-medium">CORE FEATURES</span>
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold font-display mb-4">
-                  <span className="bg-gradient-to-r from-white via-cyan-200 to-cyan-400 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-slate-900 to-blue-700 bg-clip-text text-transparent">
                     核心优势
                   </span>
                 </h2>
-                <p className="text-lg text-white/60 max-w-2xl mx-auto">
+                <p className="text-lg text-slate-500 max-w-2xl mx-auto">
                   我们提供端到端的数字化解决方案，助力企业实现智能化转型
                 </p>
               </motion.div>
@@ -172,11 +172,11 @@ export default function Home() {
             <div className="container">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
-                  <span className="bg-gradient-to-r from-white to-cyan-400 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-slate-900 to-blue-700 bg-clip-text text-transparent">
                     技术架构展示
                   </span>
                 </h2>
-                <p className="text-white/60">完整的大数据技术栈架构设计</p>
+                <p className="text-slate-500">完整的大数据技术栈架构设计</p>
               </div>
               <ImageGallery images={architectureImages} title="" />
             </div>
@@ -193,11 +193,11 @@ export default function Home() {
             <div className="container">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
-                  <span className="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-slate-900 to-blue-700 bg-clip-text text-transparent">
                     数据可视化
                   </span>
                 </h2>
-                <p className="text-white/60">实时数据监控与交互式分析</p>
+                <p className="text-slate-500">实时数据监控与交互式分析</p>
               </div>
               <ImageGallery images={visualizationImages} title="" />
             </div>
@@ -214,11 +214,11 @@ export default function Home() {
             <div className="container">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
-                  <span className="bg-gradient-to-r from-white to-pink-400 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-slate-900 to-blue-700 bg-clip-text text-transparent">
                     应用场景
                   </span>
                 </h2>
-                <p className="text-white/60">智慧城市中的实际应用案例</p>
+                <p className="text-slate-500">智慧城市中的实际应用案例</p>
               </div>
               <ImageGallery images={applicationImages} title="" />
             </div>
@@ -235,11 +235,11 @@ export default function Home() {
                 className="max-w-4xl mx-auto"
               >
                 <div className="text-center mb-12">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
-                    <Zap className="w-4 h-4 text-purple-400" />
-                    <span className="text-sm text-purple-400 font-medium">TECHNOLOGY STACK</span>
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 mb-6">
+                    <Zap className="w-4 h-4 text-blue-600" />
+                    <span className="text-sm text-blue-600 font-medium">TECHNOLOGY STACK</span>
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
+                  <h2 className="text-3xl md:text-4xl font-bold font-display mb-4 text-slate-900">
                     技术能力
                   </h2>
                 </div>
@@ -252,10 +252,10 @@ export default function Home() {
                     <ProgressBar value={85} label="区块链技术" />
                   </div>
                   <div className="space-y-6">
-                    <ProgressBar value={92} label="网络安全" color="#8B5CF6" />
-                    <ProgressBar value={87} label="物联网集成" color="#8B5CF6" />
-                    <ProgressBar value={94} label="数据分析" color="#8B5CF6" />
-                    <ProgressBar value={89} label="自动化运维" color="#8B5CF6" />
+                    <ProgressBar value={92} label="网络安全" color="#0EA5E9" />
+                    <ProgressBar value={87} label="物联网集成" color="#0EA5E9" />
+                    <ProgressBar value={94} label="数据分析" color="#0EA5E9" />
+                    <ProgressBar value={89} label="自动化运维" color="#0EA5E9" />
                   </div>
                 </div>
               </motion.div>

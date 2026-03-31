@@ -2,26 +2,26 @@ import { Skeleton } from './ui/skeleton';
 
 export function DashboardLayoutSkeleton() {
   return (
-    <div className="flex min-h-screen bg-background">
+    <div className="flex min-h-screen bg-slate-50">
       {/* Sidebar skeleton */}
-      <div className="w-[280px] border-r border-border bg-background p-4 space-y-6">
+      <div className="w-[280px] border-r border-slate-200 bg-white p-4 space-y-6">
         {/* Logo area */}
         <div className="flex items-center gap-3 px-2">
-          <Skeleton className="h-8 w-8 rounded-md" />
+          <Skeleton className="h-8 w-8 rounded-xl" />
           <Skeleton className="h-4 w-24" />
         </div>
 
         {/* Menu items */}
         <div className="space-y-2 px-2">
-          <Skeleton className="h-10 w-full rounded-lg" />
-          <Skeleton className="h-10 w-full rounded-lg" />
-          <Skeleton className="h-10 w-full rounded-lg" />
+          <Skeleton className="h-10 w-full rounded-xl" />
+          <Skeleton className="h-10 w-full rounded-xl" />
+          <Skeleton className="h-10 w-full rounded-xl" />
         </div>
 
         {/* User profile area at bottom */}
         <div className="absolute bottom-4 left-4 right-4">
           <div className="flex items-center gap-3 px-1">
-            <Skeleton className="h-9 w-9 rounded-full" />
+            <Skeleton className="h-9 w-9 rounded-xl" />
             <div className="flex-1 space-y-2">
               <Skeleton className="h-3 w-20" />
               <Skeleton className="h-2 w-32" />
