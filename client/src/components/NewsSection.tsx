@@ -1,26 +1,27 @@
 import { Calendar, ArrowRight } from "lucide-react";
+import { Link } from "wouter";
 
 const news = [
   {
+    id: 0,
+    title: "我公司董事长率领团队参观大数据集团的AI工厂展厅",
+    date: "2026年03月12日",
+    description: "2026年3月12日，我公司董事长率领团队参观大数据集团的AI工厂展厅，了解最新AI技术与应用成果。",
+    category: "合作动态",
+  },
+  {
     id: 1,
-    title: "鑫恒福科技、浪潮金融举行商务洽谈交流会",
-    date: "2020年12月04日",
-    description: "鑫恒福科技与浪潮金融商务洽谈交流会在鑫恒福科技公司5楼会议室举行。双方就合作方向进行了深入探讨。",
+    title: "公司董事长周会新率领销售以及技术团队参观考察湖北人形机器人创新中心",
+    date: "2026年01月27日",
+    description: "公司董事长周会新率领销售以及技术团队参观考察湖北人形机器人创新中心，与武汉东智科技股份有限公司形成初步合作。",
     category: "合作动态",
   },
   {
     id: 2,
-    title: "鑫恒福收到一封抗疫感谢信│携手抗疫，共克时艰",
-    date: "2020年03月20日",
-    description: "3月20日，鑫恒福公司收到了来自湖北省武汉市武昌区大数据中心的感谢信，感谢公司在疫情期间的技术支持。",
-    category: "公司新闻",
-  },
-  {
-    id: 3,
-    title: "聚焦中国互联网行业商业报道",
-    date: "2020年02月15日",
-    description: "专注互联网信息化技术最新动态，发掘新金融最具影响力的商业讯息，传播新金融核心价值。",
-    category: "行业动态",
+    title: "公司与神农架林区电信开展深度合作交流，共商发展",
+    date: "2025年10月28日",
+    description: "公司与神农架林区电信开展深度合作交流，共商发展，双方就相关合作事宜进行了深入探讨。",
+    category: "合作动态",
   },
 ];
 
@@ -76,10 +77,12 @@ export default function NewsSection() {
 
         {/* View more button */}
         <div className="text-center mt-12">
-          <button className="inline-flex items-center gap-2 px-8 py-3 rounded-xl border border-blue-200 bg-white shadow-sm text-blue-600 font-semibold hover:bg-blue-50 hover:border-blue-400 transition-all duration-300">
-            查看更多新闻
-            <ArrowRight className="w-4 h-4" />
-          </button>
+          <Link href="/news">
+            <button className="inline-flex items-center gap-2 px-8 py-3 rounded-xl border border-blue-200 bg-white shadow-sm text-blue-600 font-semibold hover:bg-blue-50 hover:border-blue-400 transition-all duration-300">
+              查看更多新闻
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </Link>
         </div>
       </div>
     </section>

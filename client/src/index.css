@@ -25,6 +25,11 @@
   --color-primary-dark: #0056B3;     /* 深蓝 */
   --color-accent: #00C4FF;           /* 另一个强调蓝 */
 
+  /* 霓虹色（补充缺失变量） */
+  --color-neon-blue: #3B82F6;
+  --color-neon-cyan: #0EA5E9;
+  --color-neon-purple: #8B5CF6;
+
 
   /* 渐变色 */
   --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-accent));
@@ -994,6 +999,11 @@ body {
 ============================================ */
 
 ::selection {
-  background: var(--color-neon-blue);
-  color: var(--color-bg-primary);
+  background: rgba(59, 130, 246, 0.3);
+  color: inherit;
+}
+
+::-moz-selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: inherit;
 }

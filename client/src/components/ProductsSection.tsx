@@ -6,6 +6,17 @@ import { Link } from "wouter";
 
 const products = [
   {
+    id: 0,
+    title: "YOLO 视觉训练平台",
+    description: "基于 YOLO 系列算法的视觉训练平台，支持目标检测、图像分类、实例分割等任务，提供一站式模型训练、评估与部署服务。",
+    icon: Zap,
+    image: "/images/sjpt.jpg",
+    gradient: "from-violet-600 to-purple-400",
+    shadowColor: "rgba(124, 58, 237, 0.3)",
+    tag: "新品",
+    features: ["目标检测", "实例分割", "一键训练", "模型部署"],
+  },
+  {
     id: 1,
     title: "智慧金融",
     description: "实现金融产品、风控、获客、服务的智慧化，建立在金融物联网基础上的完整解决方案",
