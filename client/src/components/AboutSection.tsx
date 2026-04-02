@@ -1,169 +1,147 @@
 import { motion } from "framer-motion";
-import { CheckCircle2, Sparkles, Award, Users, TrendingUp } from "lucide-react";
+import { CheckCircle2, ArrowRight, Play } from "lucide-react";
+import { Link } from "wouter";
 
 const features = [
   "云计算、大数据、物联网、人工智能、区块链等前沿技术",
   "政府、金融、公安、医疗、交通五大领域深度服务",
-  "完整的解决方案和专业的行业应用",
-  "及时的全方位技术支持和服务",
+  "完整的解决方案和专业的行业应用支持",
+  "及时的全方位技术支持与售后服务保障",
 ];
 
-const stats = [
-  { value: "15+", label: "年行业经验", icon: Award },
-  { value: "200+", label: "企业客户", icon: Users },
-  { value: "50+", label: "成功案例", icon: TrendingUp },
+/* 参考力控科技: 2002年创立 / 20+分支机构 / 400+员工 */
+const companyStats = [
+  { number: "2010", unit: "年", desc: "公司创立" },
+  { number: "15", unit: "+", desc: "年行业经验" },
+  { number: "200", unit: "+", desc: "企业客户" },
+  { number: "50", unit: "+", desc: "成功案例" },
 ];
 
 export default function AboutSection() {
   return (
-    <section className="py-24 relative overflow-hidden section-3d bg-slate-50/60 border-y border-slate-200/50">
-      {/* Background elements */}
-      <div className="absolute inset-0 tech-grid opacity-10" />
-      <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-100 rounded-full blur-[120px]" />
+    <section className="py-20 bg-white relative overflow-hidden">
+      <div className="absolute inset-0 tech-grid opacity-[0.04]" />
 
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left side - Content */}
+
+        {/* 版块标题 */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
+          className="mb-14"
+        >
+          <div className="flex items-end gap-4 mb-3">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0B3D8C]">关于鑫恒福</h2>
+            <span className="text-sm text-[#0096D6] font-semibold tracking-widest uppercase mb-1">
+              About Us
+            </span>
+          </div>
+          <div className="w-16 h-1 bg-[#0096D6] rounded-full" />
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+          {/* 左侧：文字介绍 */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-8"
+            className="space-y-6"
           >
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 mb-6"
-              >
-                <Sparkles className="w-4 h-4 text-blue-600" />
-                <span className="text-sm text-blue-600 font-medium">ABOUT US</span>
-              </motion.div>
-              <h2 className="text-4xl md:text-5xl font-bold font-display mb-4">
-                <span className="hero-title">关于鑫恒福</span>
-              </h2>
-              <div className="h-1 w-24 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mb-6" />
-            </div>
+            {/* 副标题 */}
+            <p className="text-xl font-semibold text-slate-800 leading-snug">
+              工业软件产品及工业自动化解决方案提供商
+            </p>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-lg text-slate-600 leading-relaxed"
-            >
-              湖北鑫恒福科技发展有限公司是一家从事计算机信息系统集成、智慧金融互联网平台等自主研发、生产、销售、运营及服务于一体的科技型企业。
-            </motion.p>
+            <p className="text-slate-600 leading-relaxed">
+              湖北鑫恒福科技发展有限公司是一家从事计算机信息系统集成、智慧金融互联网平台等自主研发、生产、销售、运营及服务于一体的科技型企业，聚焦智慧金融、智能视觉、智慧城市等领域管控一体化服务。
+            </p>
+            <p className="text-slate-600 leading-relaxed">
+              公司致力于向客户提供完整的解决方案、专业的行业应用、及时的全方位服务，紧跟世界主流先进技术演进方向，深度赋能企业数字化转型与智能化升级，实现成为国内一流、世界领先的 IT 服务提供商的目标。
+            </p>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="text-slate-600 leading-relaxed"
-            >
-              公司致力于向客户提供完整的解决方案、专业的行业应用、及时的全方位服务，将紧跟世界主流先进技术演进方向，不断开拓创新，实现成为国内一流、世界领先的IT服务提供商的目标。
-            </motion.p>
-
-            {/* Features list */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="space-y-4 pt-4"
-            >
+            {/* 特性清单 */}
+            <div className="space-y-3 pt-2">
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -16 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.5 + index * 0.1 }}
-                  className="flex items-start gap-3 group"
+                  transition={{ delay: 0.1 + index * 0.08 }}
+                  className="flex items-start gap-3"
                 >
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-100 to-sky-50 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300">
-                    <CheckCircle2 className="w-4 h-4 text-blue-600" />
-                  </div>
-                  <span className="text-slate-700 group-hover:text-slate-900 transition-colors">{feature}</span>
+                  <CheckCircle2 className="w-4 h-4 text-[#0096D6] flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-600 text-sm">{feature}</span>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
+
+            {/* 行动按钮 */}
+            <div className="flex flex-wrap gap-4 pt-4">
+              <Link href="/about">
+                <span className="inline-flex items-center gap-2 px-6 py-3 bg-[#0B3D8C] hover:bg-[#062D6E] text-white text-sm font-semibold rounded transition-colors group">
+                  了解更多
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </span>
+              </Link>
+              <button className="inline-flex items-center gap-2 px-6 py-3 border border-[#0B3D8C] text-[#0B3D8C] hover:bg-blue-50 text-sm font-semibold rounded transition-colors">
+                <Play className="w-4 h-4" />
+                企业视频
+              </button>
+            </div>
           </motion.div>
 
-          {/* Right side - Visual element */}
+          {/* 右侧：企业数字统计 - 参考力控科技风格 */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative hidden lg:block"
+            transition={{ duration: 0.6, delay: 0.15 }}
           >
-            {/* Stats cards */}
-            <div className="grid grid-cols-1 gap-6">
-              {stats.map((stat, index) => (
+            {/* 统计数字网格 */}
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              {companyStats.map((stat, index) => (
                 <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
+                  key={stat.desc}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.4 + index * 0.15 }}
-                  whileHover={{ scale: 1.02, x: 10 }}
-                  className="bg-white shadow-lg rounded-2xl p-6 border border-slate-200 hover:border-blue-300 transition-all duration-300 group cursor-default"
+                  transition={{ delay: 0.2 + index * 0.1 }}
+                  className="bg-[#F5F7FA] border border-slate-200 rounded-lg p-6 text-center hover:border-[#0096D6] hover:shadow-md transition-all duration-300 group"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-100 to-sky-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <stat.icon className="w-7 h-7 text-blue-600" />
-                    </div>
-                    <div>
-                      <div className="text-3xl font-bold font-display bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent">
-                        {stat.value}
-                      </div>
-                      <div className="text-sm text-slate-500">{stat.label}</div>
-                    </div>
+                  <div className="flex items-end justify-center gap-1 mb-1">
+                    <span className="stat-number">{stat.number}</span>
+                    <span className="stat-unit">{stat.unit}</span>
                   </div>
+                  <div className="text-sm text-slate-500 font-medium">{stat.desc}</div>
                 </motion.div>
               ))}
             </div>
 
-            {/* Decorative circles */}
-            <div className="absolute -z-10 inset-0 flex items-center justify-center pointer-events-none">
-              <motion.div
-                animate={{
-                  rotate: 360,
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  rotate: { duration: 30, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-                }}
-                className="absolute w-96 h-96 border border-blue-200 rounded-full"
-              />
-              <motion.div
-                animate={{
-                  rotate: -360,
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{
-                  rotate: { duration: 25, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 },
-                }}
-                className="absolute w-72 h-72 border border-sky-200 rounded-full"
-              />
-              <motion.div
-                animate={{
-                  rotate: 360,
-                  scale: [1, 1.15, 1],
-                }}
-                transition={{
-                  rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 2 },
-                }}
-                className="absolute w-48 h-48 border border-blue-100 rounded-full"
-              />
+            {/* 企业核心价值横幅 */}
+            <div className="bg-gradient-to-br from-[#0B3D8C] to-[#0D1B3E] rounded-lg p-8 text-white relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
+              <div className="relative z-10">
+                <p className="text-[#7EC8E3] text-xs font-semibold tracking-widest uppercase mb-3">
+                  Our Mission
+                </p>
+                <h3 className="text-xl font-bold mb-3">
+                  立即联系鑫恒福专家团队
+                </h3>
+                <p className="text-white/70 text-sm mb-6">
+                  为您的业务提供量身定制的数字化解决方案
+                </p>
+                <Link href="/contact">
+                  <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0096D6] hover:bg-[#007AB8] text-white text-sm font-semibold rounded transition-colors">
+                    立即注册
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>

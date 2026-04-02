@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, ArrowUpRight, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "wouter";
 import { APP_LOGO, APP_TITLE } from "@/const";
 
@@ -6,149 +6,136 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-white border-t border-slate-200 overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 tech-grid opacity-10" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-blue-300 to-transparent" />
+    <footer className="footer-dark relative overflow-hidden">
+      {/* 顶部渐变蓝线 */}
+      <div className="divider-blue" />
 
-      <div className="container relative z-10 py-16">
-        {/* Main footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Company info */}
-          <div className="space-y-6">
+      {/* 背景网格 */}
+      <div className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)",
+          backgroundSize: "60px 60px"
+        }}
+      />
+
+      {/* 主内容区 */}
+      <div className="container relative z-10 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+
+          {/* 公司信息（占2格） */}
+          <div className="lg:col-span-2 space-y-5">
             <Link href="/" className="flex items-center gap-3 group">
               <img
                 src={APP_LOGO}
                 alt={APP_TITLE}
-                className="h-10 w-auto rounded-xl group-hover:scale-105 transition-transform duration-300 ring-1 ring-slate-200/50"
+                className="h-10 w-10 rounded-lg object-cover"
               />
-          <span className="text-lg font-bold font-display bg-gradient-to-r from-slate-900 to-blue-700 bg-clip-text text-transparent">
-                {APP_TITLE}
-              </span>
+              <div>
+                <div className="text-base font-bold text-white">{APP_TITLE}</div>
+                <div className="text-[10px] text-[#0096D6] tracking-widest uppercase">Technology Co., Ltd.</div>
+              </div>
             </Link>
-        <p className="text-sm text-slate-500 leading-relaxed">
-              专业的科技型企业，致力于为政府、金融、公安等领域提供前沿的整体解决方案，构建数字化未来。
+
+            <p className="text-sm text-white/60 leading-relaxed max-w-xs">
+              专业的科技型企业，致力于为政府、金融、公安等领域提供前沿的整体解决方案，深度赋能企业数字化转型与智能化升级。
             </p>
-            {/* Social links */}
-            <div className="flex items-center gap-3">
-              {[
-                // { icon: Github, href: "#", label: "GitHub" },
-                // { icon: Linkedin, href: "#", label: "LinkedIn" },
-                // { icon: Twitter, href: "#", label: "Twitter" },
-              ].map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  aria-label={social.label}
-              className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center hover:bg-blue-50 hover:border-blue-300 hover:shadow-sm hover:text-blue-600 text-slate-600 transition-all duration-300 group"
-                >
-                  <social.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                </a>
-              ))}
+
+            {/* 联系电话 - 醒目展示 */}
+            <div className="bg-white/5 border border-white/10 rounded px-4 py-3">
+              <div className="text-xs text-white/50 mb-1">服务热线</div>
+              <a href="tel:02787771732" className="text-xl font-bold text-[#0096D6] hover:text-[#00B8F0] transition-colors">
+                027-87771732
+              </a>
             </div>
           </div>
 
-          {/* Quick links */}
-          <div className="space-y-6">
-        <h4 className="font-semibold text-slate-900 font-display">快速链接</h4>
-            <ul className="space-y-3">
+          {/* 产品服务 */}
+          <div>
+            <h4>产品服务</h4>
+            <ul className="space-y-2">
               {[
-                { label: "首页", href: "/" },
+                { label: "YOLO 视觉训练平台", href: "/products" },
+                { label: "智慧金融平台", href: "/products" },
+                { label: "Points OS 积分平台", href: "/products" },
+                { label: "智慧城市方案", href: "/products" },
+                { label: "大数据分析平台", href: "/products" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* 关于我们 */}
+          <div>
+            <h4>关于我们</h4>
+            <ul className="space-y-2">
+              {[
+                { label: "公司简介", href: "/about" },
                 { label: "产品中心", href: "/products" },
                 { label: "成功案例", href: "/cases" },
                 { label: "新闻动态", href: "/news" },
-              ].map((link) => (
-                <li key={link.href}>
-              <Link href={link.href} className="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-colors group">
-                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                    <span>{link.label}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* More links */}
-          <div className="space-y-6">
-        <h4 className="font-semibold text-slate-900 font-display">关于我们</h4>
-            <ul className="space-y-3">
-              {[
-                { label: "公司简介", href: "/about" },
                 { label: "服务支持", href: "/service" },
                 { label: "加入我们", href: "/join" },
-                { label: "联系我们", href: "/contact" },
               ].map((link) => (
                 <li key={link.href}>
-              <Link href={link.href} className="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-colors group">
-                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                    <span>{link.label}</span>
+                  <Link href={link.href} className="text-sm">
+                    {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact info */}
-          <div className="space-y-6">
-        <h4 className="font-semibold text-slate-900 font-display">联系我们</h4>
-            <div className="space-y-4">
+          {/* 联系我们 */}
+          <div>
+            <h4>联系我们</h4>
+            <div className="space-y-3">
               <a
                 href="tel:02787771732"
-            className="flex items-center gap-3 text-sm text-slate-500 hover:text-blue-600 transition-colors group"
+                className="flex items-start gap-2.5 text-sm"
               >
-            <div className="w-8 h-8 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Phone className="w-4 h-4 text-blue-600" />
-                </div>
+                <Phone className="w-4 h-4 text-[#0096D6] flex-shrink-0 mt-0.5" />
                 <span>027-87771732</span>
               </a>
               <a
                 href="mailto:hbxhf@hbxhf.com.cn"
-            className="flex items-center gap-3 text-sm text-slate-500 hover:text-blue-600 transition-colors group"
+                className="flex items-start gap-2.5 text-sm break-all"
               >
-            <div className="w-8 h-8 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Mail className="w-4 h-4 text-blue-600" />
-                </div>
-                <span className="break-all">hbxhf@hbxhf.com.cn</span>
+                <Mail className="w-4 h-4 text-[#0096D6] flex-shrink-0 mt-0.5" />
+                <span>hbxhf@hbxhf.com.cn</span>
               </a>
-          <div className="flex items-start gap-3 text-sm text-slate-500">
-            <div className="w-8 h-8 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <MapPin className="w-4 h-4 text-blue-600" />
-                </div>
+              <div className="flex items-start gap-2.5 text-sm text-white/60">
+                <MapPin className="w-4 h-4 text-[#0096D6] flex-shrink-0 mt-0.5" />
                 <p>湖北省武汉市东湖高新技术开发区金融港光谷汇金中心8号楼</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Divider */}
-    <div className="border-t border-slate-200 py-8">
-          {/* Bottom footer */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-sm text-slate-500">
-              © {currentYear} {APP_TITLE}. 保留所有权利。
-            </p>
-            <div className="flex items-center gap-6">
-              <a
-                href="#"
-            className="text-sm text-slate-500 hover:text-blue-600 transition-colors"
-              >
-                隐私政策
-              </a>
-              <a
-                href="#"
-                className="text-sm text-slate-500 hover:text-blue-600 transition-colors"
-              >
-                服务条款
-              </a>
-              <a
-                href="https://beian.miit.gov.cn/"
-                target="_blank"
-                rel="noopener noreferrer"
-            className="text-sm text-slate-500 hover:text-blue-600 transition-colors"
-              >
-                鄂ICP备12009556号-1
-              </a>
-            </div>
+        {/* 底部版权栏 */}
+        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-white/40">
+            © {currentYear} {APP_TITLE}. 保留所有权利。
+          </p>
+          <div className="flex items-center gap-5">
+            <a href="#" className="text-xs text-white/40 hover:text-white/70 transition-colors">
+              隐私政策
+            </a>
+            <a href="#" className="text-xs text-white/40 hover:text-white/70 transition-colors">
+              服务条款
+            </a>
+            <a
+              href="https://beian.miit.gov.cn/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-white/40 hover:text-[#0096D6] transition-colors"
+            >
+              鄂ICP备12009556号-1
+            </a>
           </div>
         </div>
       </div>

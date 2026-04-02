@@ -1,16 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Sparkles, Globe } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useTranslation } from "react-i18next";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { APP_LOGO, APP_TITLE } from "@/const";
 import { useScrollDirection } from "@/hooks/useScroll";
 import { LANGUAGE_OPTIONS, LANGUAGE_STORAGE_KEY } from "@/i18n";
@@ -19,6 +10,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const scrollDirection = useScrollDirection();
   const [isVisible, setIsVisible] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
   const { t, i18n } = useTranslation();
 
@@ -44,128 +36,119 @@ export default function Navigation() {
     }
   }, [scrollDirection]);
 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const navItems = [
-    { label: t("nav.home"), href: "/" },
-    { label: t("nav.products"), href: "/products" },
-    { label: t("nav.cases"), href: "/cases" },
-    { label: t("nav.news"), href: "/news" },
-    { label: t("nav.about"), href: "/about" },
-    { label: t("nav.service"), href: "/service" },
-    { label: t("nav.join"), href: "/join" },
+    { label: "首页", href: "/" },
+    { label: "产品服务", href: "/products" },
+    { label: "客户案例", href: "/cases" },
+    { label: "新闻资讯", href: "/news" },
+    { label: "关于我们", href: "/about" },
+    { label: "服务支持", href: "/service" },
+    { label: "加入我们", href: "/join" },
   ];
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-transform duration-500 ${
-        isVisible ? "translate-y-0" : "-translate-y-full"
-      }`}
-    >
-      <div className="container flex items-center justify-between h-16">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 cursor-pointer group">
-          <div className="relative">
+    /* 整个导航包裹层 */
+    <div className={`fixed top-0 w-full z-50 transition-transform duration-500 ${isVisible ? "translate-y-0" : "-translate-y-full"}`}>
+
+      {/* 主导航栏 */}
+      <nav className={`w-full transition-all duration-300 ${
+        scrolled
+          ? "bg-white shadow-md border-b border-slate-200"
+          : "bg-white border-b border-slate-100"
+      }`}>
+        <div className="container flex items-center justify-between h-16">
+
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-3 cursor-pointer group flex-shrink-0">
             <img
               src={APP_LOGO}
               alt={APP_TITLE}
-              className="h-9 w-9 rounded-xl object-cover ring-1 ring-blue-500/30 group-hover:ring-blue-400/60 transition-all duration-300"
+              className="h-10 w-10 rounded-lg object-cover transition-transform duration-300 group-hover:scale-105"
             />
-          </div>
-          <span className="text-lg font-bold font-display hidden sm:inline bg-gradient-to-r from-slate-900 via-blue-800 to-blue-600 bg-clip-text text-transparent">
-            {APP_TITLE}
-          </span>
-        </Link>
+            <div className="hidden sm:block">
+              <div className="text-base font-bold text-[#0B3D8C] leading-tight">{APP_TITLE}</div>
+              <div className="text-[10px] text-slate-400 tracking-widest uppercase">Technology Co., Ltd.</div>
+            </div>
+          </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-1">
-          {navItems.map((item) => (
-            <Link key={item.href} href={item.href}>
-              <span className={`px-3 py-2 rounded-xl text-sm font-medium transition-colors ${location === item.href ? 'text-blue-600 bg-blue-50' : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'}`}>
-                {item.label}
-              </span>
-            </Link>
-          ))}
-        </div>
-
-        {/* Language dropdown */}
-        <div className="hidden md:flex items-center gap-4">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button className="flex items-center gap-2 px-4 py-2 rounded-xl border border-blue-200 text-blue-600 hover:bg-blue-50 transition-all text-sm font-semibold">
-                <Globe className="w-4 h-4" />
-                {t(languageLabel)}
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-40">
-              <DropdownMenuLabel>{t("nav.language")}</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuRadioGroup value={currentLanguage} onValueChange={handleLanguageChange}>
-                {LANGUAGE_OPTIONS.map((option) => (
-                  <DropdownMenuRadioItem key={option.code} value={option.code}>
-                    {t(option.labelKey)}
-                  </DropdownMenuRadioItem>
-                ))}
-              </DropdownMenuRadioGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden p-2.5 rounded-xl bg-white border border-slate-200 hover:bg-blue-50 hover:border-blue-300 transition-all duration-300 group"
-          aria-label="Toggle menu"
-        >
-          {isOpen ? (
-          <X className="w-5 h-5 text-blue-600" />
-          ) : (
-          <Menu className="w-5 h-5 text-slate-800 group-hover:text-blue-600 transition-colors" />
-          )}
-        </button>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-slate-200">
-          <div className="container py-6 flex flex-col gap-2">
+          {/* 桌面端主导航 */}
+          <div className="hidden lg:flex items-center">
             {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
+              <Link key={item.href} href={item.href}>
+                <span className={`relative px-4 py-5 text-sm font-medium transition-colors inline-block group ${
                   location === item.href
-                    ? "bg-gradient-to-r from-blue-50 to-sky-50 text-blue-700 border border-blue-200"
-                    : "text-slate-600 hover:text-blue-600 hover:bg-slate-50"
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                <Sparkles className="w-4 h-4 opacity-60" />
-                {item.label}
+                    ? "text-[#0B3D8C]"
+                    : "text-slate-600 hover:text-[#0B3D8C]"
+                }`}>
+                  {item.label}
+                  {/* 底部蓝色下划线 */}
+                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#0096D6] transition-transform duration-300 origin-center ${
+                    location === item.href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  }`} />
+                </span>
               </Link>
             ))}
-            <div className="mt-4 pt-4 border-t border-slate-200">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <button className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-blue-200 text-blue-600 hover:bg-blue-50 transition-all text-sm font-semibold">
-                    <Globe className="w-4 h-4" />
-                    {t(languageLabel)}
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="center" className="w-40">
-                  <DropdownMenuLabel>{t("nav.language")}</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuRadioGroup value={currentLanguage} onValueChange={handleLanguageChange}>
-                    {LANGUAGE_OPTIONS.map((option) => (
-                      <DropdownMenuRadioItem key={option.code} value={option.code}>
-                        {t(option.labelKey)}
-                      </DropdownMenuRadioItem>
-                    ))}
-                  </DropdownMenuRadioGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
+          </div>
+
+          {/* 右侧操作区 */}
+          <div className="hidden lg:flex items-center gap-3">
+            {/* 立即咨询按钮 */}
+            <Link href="/contact">
+              <span className="px-5 py-2 text-sm font-semibold text-white rounded bg-[#0B3D8C] hover:bg-[#062D6E] transition-colors">
+                立即咨询
+              </span>
+            </Link>
+          </div>
+
+          {/* 手机端菜单按钮 */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden p-2 rounded border border-slate-200 hover:border-[#0096D6] transition-all"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? (
+              <X className="w-5 h-5 text-[#0B3D8C]" />
+            ) : (
+              <Menu className="w-5 h-5 text-slate-700" />
+            )}
+          </button>
+        </div>
+
+        {/* 手机端下拉菜单 */}
+        {isOpen && (
+          <div className="lg:hidden bg-white border-t border-slate-100 shadow-lg">
+            <div className="container py-4 flex flex-col">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`flex items-center px-4 py-3 text-sm font-medium border-b border-slate-50 transition-colors ${
+                    location === item.href
+                      ? "text-[#0B3D8C] bg-blue-50 border-l-2 border-l-[#0096D6]"
+                      : "text-slate-600 hover:text-[#0B3D8C] hover:bg-slate-50"
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <div className="pt-4 pb-2 px-4">
+                <Link href="/contact" className="block">
+                  <span className="flex items-center justify-center py-2.5 text-sm font-semibold text-white rounded bg-[#0B3D8C] w-full">
+                    立即咨询
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </nav>
+        )}
+      </nav>
+    </div>
   );
 }
