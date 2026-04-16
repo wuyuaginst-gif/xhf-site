@@ -4,7 +4,7 @@ import { CheckCircle2, Users, Zap, Target } from "lucide-react";
 
 const timeline = [
   {
-    year: "2008",
+    year: "2005",
     title: "公司成立",
     description: "湖北鑫恒福科技发展有限公司正式成立，致力于计算机信息系统集成和智慧金融平台开发。"
   },
@@ -146,7 +146,7 @@ export default function About() {
           <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="text-5xl font-bold gradient-text mb-2">15+</div>
+                <div className="text-5xl font-bold gradient-text mb-2">20+</div>
                 <p className="text-slate-600">年行业经验</p>
               </div>
               <div className="text-center">

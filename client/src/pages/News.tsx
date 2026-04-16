@@ -11,6 +11,24 @@ import { Calendar, ChevronDown, ChevronUp, X } from "lucide-react";
 const allNews = [
   {
     id: 0,
+    title: "鑫恒福科技公司与湖北水发楚禹公司座谈交流会",
+    date: "2026年04月15日",
+    category: "合作动态",
+    description:
+      "2026年4月15日，湖北鑫恒福科技有限公司与湖北水发楚禹公司在武汉举行座谈交流会，双方围绕业务协同与项目合作深入交流。",
+    fullContent: `2026年4月15日，湖北鑫恒福科技有限公司与湖北水发楚禹公司在武汉举行“鑫恒福科技公司与湖北水发楚禹公司座谈交流会”。双方代表团在会议室开展友好、务实的业务交流。
+
+会上，鑫恒福科技介绍了公司在智能化、数字化及专业技术服务领域的发展情况与典型案例；湖北水发楚禹公司介绍了主营业务布局与合作期待。双方围绕智慧水务、信息化建设和项目协作等方向交换意见，并就下一步深化沟通、推进具体合作达成共识。
+
+此次座谈加强了双方互信，为后续在相关领域的协同落地奠定了良好基础。`,
+    images: [
+      "/news_20260415_1.png",
+      "/news_20260415_2.png",
+      "/news_20260415_3.png",
+    ],
+  },
+  {
+    id: 1,
     title: "我公司董事长率领团队参观大数据集团的AI工厂展厅",
     date: "2026年03月12日",
     category: "合作动态",
@@ -28,7 +46,7 @@ const allNews = [
     ],
   },
   {
-    id: 1,
+    id: 2,
     title: "公司董事长周会新率领销售以及技术团队参观考察湖北人形机器人创新中心，与武汉东智科技股份有限公司形成初步合作",
     date: "2026年01月27日",
     category: "合作动态",
@@ -49,7 +67,7 @@ const allNews = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: "公司与神农架林区电信开展深度合作交流，共商发展",
     date: "2025年10月28日",
     category: "合作动态",
@@ -65,7 +83,7 @@ const allNews = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: "公司董事长带队赴湖北大数据集团政务服务公司交流",
     date: "2025年10月15日",
     category: "合作动态",
@@ -78,7 +96,7 @@ const allNews = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     title: "鑫恒福科技与高校合作建立联合研究中心",
     date: "2021年11月08日",
     category: "合作动态",
@@ -89,7 +107,7 @@ const allNews = [
     images: [],
   },
   {
-    id: 5,
+    id: 6,
     title: "智慧金融平台成功上线，服务数百万用户",
     date: "2021年09月22日",
     category: "产品动态",
@@ -100,7 +118,7 @@ const allNews = [
     images: [],
   },
   {
-    id: 6,
+    id: 7,
       title: '鑫恒福科技荣获"年度最佳技术创新企业"奖',
     date: "2021年06月10日",
     category: "荣誉奖项",
@@ -111,7 +129,7 @@ const allNews = [
     images: [],
   },
   {
-    id: 7,
+    id: 8,
     title: "鑫恒福科技、浪潮金融举行商务洽谈交流会",
     date: "2020年12月04日",
     category: "合作动态",
@@ -122,7 +140,7 @@ const allNews = [
     images: [],
   },
   {
-    id: 8,
+    id: 9,
     title: "鑫恒福收到一封抗疫感谢信│携手抗疫，共克时艰",
     date: "2020年03月20日",
     category: "公司新闻",
@@ -133,7 +151,7 @@ const allNews = [
     images: [],
   },
   {
-    id: 9,
+    id: 10,
     title: "聚焦中国互联网行业商业报道",
     date: "2020年02月15日",
     category: "行业动态",
@@ -303,22 +321,24 @@ export default function News() {
   return (
     <div className="min-h-screen flex flex-col bg-white text-slate-900">
       <Navigation />
-      <main className="flex-1 pt-16">
+      <main className="flex-1 pt-20">
 
-        {/* 页头 */}
-        <section className="py-16 bg-[#0B3D8C] relative overflow-hidden">
-          <div
-            className="absolute inset-0 pointer-events-none opacity-30"
-            style={{
-              backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
-              backgroundSize: "60px 60px",
-            }}
-          />
-          <div className="container relative z-10 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">新闻中心</h1>
-            <p className="text-white/60 text-base">聚焦行业动态，传播最新资讯</p>
-            <div className="mt-4 w-12 h-0.5 bg-[#0096D6] mx-auto rounded-full" />
+        {/* 页头：与解决方案、关于我们、联系我们等内页同一套样式 */}
+        <section className="relative py-20 overflow-hidden section-3d bg-white">
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-20 left-10 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          </div>
+
+          <div className="container relative z-10">
+            <div className="max-w-3xl mx-auto text-center space-y-4">
+              <h1 className="text-5xl md:text-6xl font-bold">
+                <span className="gradient-text">新闻中心</span>
+              </h1>
+              <p className="text-lg text-slate-600">
+                聚焦行业动态，传播最新资讯
+              </p>
+            </div>
           </div>
         </section>
 

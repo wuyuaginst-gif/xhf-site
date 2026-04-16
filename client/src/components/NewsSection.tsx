@@ -9,6 +9,25 @@ import { Link } from "wouter";
 const news = [
   {
     id: 0,
+    title: "鑫恒福科技公司与湖北水发楚禹公司座谈交流会",
+    date: "2026/04/15",
+    category: "合作动态",
+    hot: true,
+    description:
+      "2026年4月15日，湖北鑫恒福科技有限公司与湖北水发楚禹公司在武汉举行座谈交流会，双方围绕业务协同与项目合作深入交流。",
+    fullContent: `2026年4月15日，湖北鑫恒福科技有限公司与湖北水发楚禹公司在武汉举行“鑫恒福科技公司与湖北水发楚禹公司座谈交流会”。双方代表团在会议室开展友好、务实的业务交流。
+
+会上，鑫恒福科技介绍了公司在智能化、数字化及专业技术服务领域的发展情况与典型案例；湖北水发楚禹公司介绍了主营业务布局与合作期待。双方围绕智慧水务、信息化建设和项目协作等方向交换意见，并就下一步深化沟通、推进具体合作达成共识。
+
+此次座谈加强了双方互信，为后续在相关领域的协同落地奠定了良好基础。`,
+    images: [
+      "/news_20260415_1.png",
+      "/news_20260415_2.png",
+      "/news_20260415_3.png",
+    ],
+  },
+  {
+    id: 1,
     title: "我公司董事长率领团队参观大数据集团的AI工厂展厅",
     date: "2026/03/12",
     category: "合作动态",
@@ -27,7 +46,7 @@ const news = [
     ],
   },
   {
-    id: 1,
+    id: 2,
     title: "公司董事长周会新率领团队参观考察湖北人形机器人创新中心",
     date: "2026/01/27",
     category: "合作动态",
@@ -49,7 +68,7 @@ const news = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: "公司与神农架林区电信开展深度合作交流，共商发展",
     date: "2025/10/28",
     category: "合作动态",
@@ -69,6 +88,7 @@ const news = [
 
 /* 快讯数据 */
 const quickNews = [
+  { title: "鑫恒福科技与湖北水发楚禹公司举行座谈交流会", date: "2026/04/15" },
   { title: "鑫恒福科技荣获武汉市创新型企业称号", date: "2026/03/20" },
   { title: "公司 YOLO 视觉训练平台正式发布 2.0 版本", date: "2026/02/15" },
   { title: "公司与某大型国有银行签署战略合作协议", date: "2026/01/10" },
@@ -126,29 +146,40 @@ function NewsCard({ item, index }: { item: (typeof news)[0]; index: number }) {
 ───────────────────────────────────────────── */
 export default function NewsSection() {
   return (
-    <section className="py-20 bg-[#F5F7FA] relative overflow-hidden">
-      <div className="absolute inset-0 tech-grid opacity-[0.04]" />
-      <div className="container relative z-10">
+    <>
+      {/* 页头：与 /news 及解决方案、关于我们等内页同一套样式 */}
+      <section className="relative py-20 overflow-hidden section-3d bg-white">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 left-10 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
 
-        {/* 版块标题 */}
+        <div className="container relative z-10">
+          <div className="max-w-3xl mx-auto text-center space-y-4">
+            <h2 className="text-5xl md:text-6xl font-bold">
+              <span className="gradient-text">新闻中心</span>
+            </h2>
+            <p className="text-lg text-slate-600">
+              聚焦行业动态，传播最新资讯
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-[#F5F7FA] relative overflow-hidden">
+        <div className="absolute inset-0 tech-grid opacity-[0.04]" />
+        <div className="container relative z-10">
+
+        {/* 入口链接（与顶栏标题不重复） */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="flex items-center justify-between mb-12"
+          className="flex justify-end mb-12"
         >
-          <div>
-            <div className="flex items-end gap-4 mb-3">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0B3D8C]">新闻中心</h2>
-              <span className="text-sm text-[#0096D6] font-semibold tracking-widest uppercase mb-1">
-                News Center
-              </span>
-            </div>
-            <div className="w-16 h-1 bg-[#0096D6] rounded-full" />
-          </div>
           <Link href="/news">
-            <span className="hidden md:inline-flex items-center gap-1 text-sm text-[#0B3D8C] hover:text-[#0096D6] transition-colors font-medium">
+            <span className="inline-flex items-center gap-1 text-sm text-[#0B3D8C] hover:text-[#0096D6] transition-colors font-medium">
               查看更多
               <ChevronRight className="w-4 h-4" />
             </span>
@@ -213,5 +244,6 @@ export default function NewsSection() {
         </div>
       </div>
     </section>
+    </>
   );
 }

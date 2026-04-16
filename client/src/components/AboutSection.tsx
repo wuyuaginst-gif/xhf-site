@@ -9,10 +9,10 @@ const features = [
   "及时的全方位技术支持与售后服务保障",
 ];
 
-/* 参考力控科技: 2002年创立 / 20+分支机构 / 400+员工 */
+/* 公司创立于 2005 年 */
 const companyStats = [
-  { number: "2010", unit: "年", desc: "公司创立" },
-  { number: "15", unit: "+", desc: "年行业经验" },
+  { number: "2005", unit: "年", desc: "公司创立" },
+  { number: "20", unit: "+", desc: "年行业经验" },
   { number: "200", unit: "+", desc: "企业客户" },
   { number: "50", unit: "+", desc: "成功案例" },
 ];
@@ -137,7 +137,7 @@ export default function AboutSection() {
                 </p>
                 <Link href="/contact">
                   <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0096D6] hover:bg-[#007AB8] text-white text-sm font-semibold rounded transition-colors">
-                    立即注册
+                    联系我们
                     <ArrowRight className="w-4 h-4" />
                   </span>
                 </Link>
